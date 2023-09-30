@@ -1,11 +1,49 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 using algori.arrays;
 
 using static CustomLinkedList;
 
 Console.WriteLine("Hello, World!");
+
+
+static void DetectCycleInLinkedList()
+{
+
+    int position = 1;
+    int[] arra1 = new int[] { 2, 4, 3 };
+    CustomLinkedList list = new CustomLinkedList();
+    for (int i = 0; i < arra1.Length; i++)
+    {
+        list.AddNewNode(arra1[i]);
+    }
+
+    //  list.InsertItemMiddle(1, 1);
+    list.DisplayLinkedList();
+}
+
+// DetectCycleInLinkedList();
+
+
+SampleDoubleLinkedList();
+
+static void SampleDoubleLinkedList()
+{
+
+    DoubleLinkedList list = new DoubleLinkedList();
+    int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    for (int i = 0; i < arr.Length; i++)
+    {
+        list.AddNewNode(arr[i]);
+    }
+
+    list.DisplayLinkedList();
+    list.DisplayReverseLinkedList();
+
+}
 
 // ArrayStudy arrayStudy = new ArrayStudy();
 // int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -131,57 +169,100 @@ Console.WriteLine("Hello, World!");
 // Console.WriteLine(time.ToString("HH:mm:ss"));
 
 
-string s = "abacaba";
-//printlexicalorderforagivenstring("abacaba");
-Console.WriteLine(OrderStringInLexicalOrder("abacaba"));
-// void printlexicalorderforagivenstring(string s)
+// string s = "abacaba";
+// //printlexicalorderforagivenstring("abacaba");
+// Console.WriteLine(OrderStringInLexicalOrder("ab"));
+// // void printlexicalorderforagivenstring(string s)
+// // {
+// //     List<string> result = new List<string>();
+// //     for (int i = 0; i < s.Length; i++)
+// //     {
+// //         for (int j = i + 1; j <= s.Length; j++)
+// //         {
+// //             result.Add(s.Substring(i, j - i));
+// //         }
+// //     }
+
+// //     result.Sort();
+// //     foreach (var item in result)
+// //     {
+// //         Console.WriteLine(item);
+// //     }
+// // }
+
+
+// Console.WriteLine(LexicographicallyGreaterString("ab"));
+// Console.WriteLine(LexicographicallyGreaterString("bb"));
+// Console.WriteLine(LexicographicallyGreaterString("hefg"));
+// Console.WriteLine(LexicographicallyGreaterString("dhck"));
+// Console.WriteLine(LexicographicallyGreaterString("dkhc"));
+
+// string LexicographicallyGreaterString(string input)
 // {
-//     List<string> result = new List<string>();
-//     for (int i = 0; i < s.Length; i++)
+//     char[] chars = input.ToCharArray();
+//     for (int i = 0; i < chars.Length; i++)
 //     {
-//         for (int j = i + 1; j <= s.Length; j++)
+//         for (int j = i + 1; j < chars.Length; j++)
 //         {
-//             result.Add(s.Substring(i, j - i));
+//             if (chars[i] > chars[j])
+//             {
+//                 char temp = chars[i];
+//                 chars[i] = chars[j];
+//                 chars[j] = temp;
+//             }
 //         }
 //     }
 
-//     result.Sort();
-//     foreach (var item in result)
+//     return new string(chars);
+
+// }
+
+
+// int OrderStringInLexicalOrder(string s)
+// {
+//     List<string> result = new List<string>();
+//     Console.WriteLine(s);
+//     char[] chars = s.ToCharArray();
+//     int count = 0;
+
+//     for (int j = 0 + 1; j < chars.Length; j++)
 //     {
-//         Console.WriteLine(item);
+//         int m = j + 1 < chars.Length ? j + 1 : j;
+//         if (chars[j] >= chars[m])
+//         {
+//             continue;
+
+//         }
+//         else if (chars[j] < chars[m])
+//         {
+//             count++;
+//             char temp = chars[j];
+//             chars[j] = chars[m];
+//             chars[m] = temp;
+//         }
+
+//     }
+
+//     Console.WriteLine(new string(chars));
+
+//     return count;
+// }
+
+// // convert string into the lexicographically smallest possible string in as few moves as possible. i.e alphabatical order.
+// // string s = "abacaba";
+// int count = 0;
+// for (int i = 0; i < s.Length; i++)
+// {
+//     for (int j = i + 1; j < s.Length; j++)
+//     {
+//         if (s[i] > s[j])
+//         {
+//             count++;
+//         }
 //     }
 // }
 
-string OrderStringInLexicalOrder(string s)
-{
-    List<string> result = new List<string>();
-    for (int i = 0; i < s.Length; i++)
-    {
-        for (int j = i + 1; j <= s.Length; j++)
-        {
-            result.Add(s.Substring(i, j - i));
-        }
-    }
 
-    result.Sort();
-    return result[0];
-}
-
-// convert string into the lexicographically smallest possible string in as few moves as possible. i.e alphabatical order.
-// string s = "abacaba";
-int count = 0;
-for (int i = 0; i < s.Length; i++)
-{
-    for (int j = i + 1; j < s.Length; j++)
-    {
-        if (s[i] > s[j])
-        {
-            count++;
-        }
-    }
-}
-
- 
 
 
 // List<int> candles = new List<int>() { 3, 2, 1, 3 };

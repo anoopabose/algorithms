@@ -16,9 +16,28 @@ public class CustomLinkedList
         }
     }
 
-    public void AddNode(int val)
+    // public void AddNode(int val)
+    // {
+    //     Node newNode = new Node(val);
+    //     if (Head == null)
+    //     {
+    //         Head = newNode;
+    //         return;
+    //     }
+
+    //     Node current = Head;
+    //     while (current.Next != null)
+    //     {
+    //         current = current.Next;
+    //     }
+    //     current.Next = newNode;
+    // }
+
+
+    public void AddNewNode(int val)
     {
         Node newNode = new Node(val);
+
         if (Head == null)
         {
             Head = newNode;
@@ -26,10 +45,12 @@ public class CustomLinkedList
         }
 
         Node current = Head;
+
         while (current.Next != null)
         {
             current = current.Next;
         }
+
         current.Next = newNode;
     }
 
@@ -142,6 +163,31 @@ public class CustomLinkedList
 
     }
 
+    public void DisplayReverseLinkedList(){
+        Node current = Head;
+        Node previous = null;
+        Node next = null;
+
+        while(current != null){
+            next = current.Next;
+            current.Next = previous;
+            previous = current;
+            current = next;
+        }
+
+        while(previous != null){
+            Console.Write($"{previous.Val}");
+            if (previous.Next != null)
+            {
+                Console.Write(" -> ");
+            }
+            previous = previous.Next ?? null;
+        }
+        Console.WriteLine();
+
+    }
+
+
     public void DeleteKthNodeFromEndofTheList(int kthNode)
     {
         if (Head == null || kthNode == 0)
@@ -164,7 +210,7 @@ public class CustomLinkedList
 
                 }
                 return;
-            }            
+            }
         }
 
 
@@ -193,7 +239,8 @@ public class CustomLinkedList
         {
             counter++;
 
-            if(counter == kthNode){
+            if (counter == kthNode)
+            {
 
                 first.Next = first.Next.Next;
                 break;

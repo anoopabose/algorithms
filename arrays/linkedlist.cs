@@ -7,41 +7,47 @@ public class ListNode
         this.val = val;
         this.next = next;
     }
+
 }
 
 
 public class Solution
 {
- public LinkedList<int> list;
-public void CreateLinkedList(){
-    ; list = new LinkedList<int>();
-    list.AddLast(1);
-    list.AddLast(2);
-    list.AddLast(3);
-    list.AddLast(4);
+    public LinkedList<int> list;
+    public void CreateLinkedList()
+    {
+        ; list = new LinkedList<int>();
+        list.AddLast(1);
+        list.AddLast(2);
+        list.AddLast(3);
+        list.AddLast(4);
 
 
 
-}
-
-public void DisplayLinkedList(){
-    foreach(int i in list){
-        Console.Write(i + " -> ");
     }
 
-Console.WriteLine();
-    while(list.Count > 0){
-        Console.Write(list.First.Value + " -> ");
-        list.RemoveFirst();
-    }
-    Console.WriteLine();
+    public void DisplayLinkedList()
+    {
+        foreach (int i in list)
+        {
+            Console.Write(i + " -> ");
+        }
 
-       foreach(int i in list){
-        Console.Write(i + " -> ");
-    }
-    Console.WriteLine();
+        Console.WriteLine();
+        while (list.Count > 0)
+        {
+            Console.Write(list.First.Value + " -> ");
+            list.RemoveFirst();
+        }
+        Console.WriteLine();
 
-}
+        foreach (int i in list)
+        {
+            Console.Write(i + " -> ");
+        }
+        Console.WriteLine();
+
+    }
 
 
     // https://leetcode.com/problems/add-two-numbers/
