@@ -33,6 +33,34 @@ public class CustomLinkedList
     //     current.Next = newNode;
     // }
 
+    public void insertNodeAtHead(int val)
+    {
+        Node newNode = new Node(val);
+        if (Head == null)
+        {
+            Head = newNode;
+            return;
+        }
+        newNode.Next = Head;
+        Head = newNode;
+    }
+
+    public void AddNode(int val)
+    {
+        Node newNode = new Node(val);
+        if (Head == null)
+        {
+            Head = newNode;
+            return;
+        }
+
+        Node current = Head;
+        while (current.Next != null)
+        {
+            current = current.Next;
+        }
+        current.Next = newNode;
+    }
 
     public void AddNewNode(int val)
     {
@@ -94,6 +122,27 @@ public class CustomLinkedList
             current = current.Next;
         }
     }
+
+    public void RemoveNodeByPosition(int position)
+    {
+        if (Head == null)
+        {
+            return;
+        }
+        Node current = Head;
+        int count = 0;
+        while (current.Next != null)
+        {
+            count++;
+            if (count == position)
+            {
+                current.Next = current.Next.Next;
+                return;
+            }
+            current = current.Next;
+        }
+    }
+
 
     public void InsertItemMiddle(int val, int position)
     {
@@ -163,19 +212,22 @@ public class CustomLinkedList
 
     }
 
-    public void DisplayReverseLinkedList(){
+    public void DisplayReverseLinkedList()
+    {
         Node current = Head;
         Node previous = null;
         Node next = null;
 
-        while(current != null){
+        while (current != null)
+        {
             next = current.Next;
             current.Next = previous;
             previous = current;
             current = next;
         }
 
-        while(previous != null){
+        while (previous != null)
+        {
             Console.Write($"{previous.Val}");
             if (previous.Next != null)
             {
@@ -185,6 +237,60 @@ public class CustomLinkedList
         }
         Console.WriteLine();
 
+    }
+
+    public void CompareList(Node head1, Node head2)
+    {
+        Node current1 = head1;
+        Node current2 = head2;
+
+        while (current1 != null && current2 != null)
+        {
+            if (current1.Val != current2.Val)
+            {
+                Console.WriteLine("Not Equal");
+                return;
+            }
+            current1 = current1.Next;
+            current2 = current2.Next;
+        }
+        Console.WriteLine("Equal");
+    }
+
+    public void MergeLists(Node head1, Node head2)
+    {
+        Node current1 = head1;
+        Node current2 = head2;
+
+        Node dummy = new Node(0);
+        Node tail = dummy;
+
+        while (true)
+        {
+            if (current1 == null)
+            {
+                tail.Next = current2;
+                break;
+            }
+            if (current2 == null)
+            {
+                tail.Next = current1;
+                break;
+            }
+
+            if (current1.Val <= current2.Val)
+            {
+                tail.Next = current1;
+                current1 = current1.Next;
+            }
+            else
+            {
+                tail.Next = current2;
+                current2 = current2.Next;
+            }
+            tail = tail.Next;
+        }
+        // DisplayLinkedList(dummy.Next);
     }
 
 
@@ -249,6 +355,29 @@ public class CustomLinkedList
             second = second.Next;
         }
 
+    }
+
+    /*
+        Given N dices each face ranging from 1 to 6, return the minimum number of rotations necessary for each dice show the same face.
+Notice in one rotation you can rotate the dice to the adjacent face. 
+For example you can rotate the dice shows 1 to show 2, 3, 4, or 5. 
+But to make it show 6, you need two rotations.
+    */
+
+    public int MinDiceRotations(int[] A)
+    {
+        int[] count = new int[7];
+        int res = Int32.MaxValue;
+        for (int i = 0; i < A.Length; i++)
+        {
+            count[A[i]]++;
+        }
+
+        for (int i = 1; i <= 6; i++)
+        {
+            res = Math.Min(res, A.Length - count[i]);
+        }
+        return res;
     }
 
 
