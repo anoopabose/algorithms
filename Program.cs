@@ -8,6 +8,95 @@ using algori.arrays;
 
 using static CustomLinkedList;
 using static SolutionSinglyLinkedListNode;
+using static TreeStud;
+
+
+static long GetFactorical(long i){
+    if(i == 1){
+        return 1;
+    }
+    return i * GetFactorical(i - 1);
+}
+
+static int Gcd(int[] arr){
+    int result = arr[0];
+    for (int i = 1; i < arr.Length; i++)
+    {
+        result = Gcd(result, arr[i]);
+    }
+
+    return result;
+
+}
+
+static int Gcd(int a, int b){
+    if(b == 0){
+        return a;
+    }
+    return Gcd(b, a % b);
+}
+Console.WriteLine(GetFactorical(10));
+ 
+
+TreeStud treeStud = new TreeStud();
+Tree tree = new Tree(100);
+treeStud.Insert(tree, 150);
+treeStud.Insert(tree, 149);
+treeStud.Insert(tree, 155);
+treeStud.Insert(tree, 10);
+treeStud.Insert(tree, 5);
+treeStud.Insert(tree, 15);
+treeStud.Insert(tree, 3);
+treeStud.Insert(tree, 7);
+treeStud.Insert(tree, 13);
+treeStud.Insert(tree, 17);
+treeStud.Insert(tree, 1);
+
+
+
+treeStud.PrintTree(tree);
+Console.WriteLine();
+
+treeStud.PrintTreeInOrder(tree);
+Console.WriteLine();
+
+treeStud.PrintTreePreOrder(tree);
+Console.WriteLine();
+
+treeStud.PrintTreePostOrder(tree);
+Console.WriteLine();
+
+
+
+List<Employee> employees = new List<Employee>();
+
+for (int i = 0; i < 5; i++)
+{
+
+    Employee _employee = new Employee();
+    _employee.FirstName = i + "Anoop";
+    _employee.LastName = i + "Bose";
+    _employee.Age = System.Random.Shared.Next(30, 50);
+    _employee.Company = "Microsoft";
+
+    employees.Add(_employee);
+
+}
+
+for (int i = 0; i < 5; i++)
+{
+
+    Employee _employee = new Employee();
+    _employee.FirstName = i + "CSSs";
+    _employee.LastName = i + "CSSs";
+    _employee.Age = System.Random.Shared.Next(50, 70);
+    _employee.Company = "Amazon";
+
+    employees.Add(_employee);
+}
+
+SolutionEmployee solutionEmployee = new SolutionEmployee();
+solutionEmployee.AverageAgeForEachCompany(employees);
 
 
 /*
@@ -68,7 +157,7 @@ static int BestTimeToBuyAndSellStock(int[] prices)
 
 }
 
-BestTimeToBuyAndSellStock(new int[] { 1,2 });
+BestTimeToBuyAndSellStock(new int[] { 1, 2 });
 
 
 /*

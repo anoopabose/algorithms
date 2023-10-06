@@ -171,14 +171,14 @@ public class SortAlgorithms
             return temp;
         }
 
-        private void QuickSort(int[] temp, int v1, int v2)
+        private void QuickSort(int[] temp, int start, int end)
         {
 
-            if (v1 < v2)
+            if (start < end)
             {
-                int pivot = Partition(temp, v1, v2);
-                QuickSort(temp, v1, pivot - 1);
-                QuickSort(temp, pivot + 1, v2);
+                int pivot = Partition(temp, start, end);
+                QuickSort(temp, start, pivot - 1);
+                QuickSort(temp, pivot + 1, end);
             }
             
         }
